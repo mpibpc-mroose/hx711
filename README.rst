@@ -17,13 +17,15 @@ HX711
      :target: https://pyup.io/repos/github/mpibpc_mroose/hx711/
      :alt: Updates
 
-
+=====
 HX711
 =====
 This library allows to drive a HX711 on a Raspberry Pi. It just provides the capabilities:
 
 * to set channel an gain and
 * to read raw values
+
+**This package requires RPi.GPIO to be installed in Python 3.**
 
 Example implementation:
 ```
@@ -48,7 +50,6 @@ print("\n".join(measures))
 
 
 * Free software: MIT license
-* Documentation: https://hx711.readthedocs.io.
 
 
 

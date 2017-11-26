@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-import RPi.GPIO as GPIO
+try:
+    import RPi.GPIO as GPIO
+except ImportError:
+    raise ImportError(
+        "You probably have to install RPi.GPIO"
+    )
 import time
 import logging
 
