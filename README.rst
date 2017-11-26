@@ -17,7 +17,8 @@ HX711
      :target: https://pyup.io/repos/github/mpibpc_mroose/hx711/
      :alt: Updates
 
-
+Description
+-----------
 This library allows to drive a HX711 on a Raspberry Pi. It just provides the capabilities:
 
 * to set channel an gain and
@@ -25,28 +26,34 @@ This library allows to drive a HX711 on a Raspberry Pi. It just provides the cap
 
 **This package requires RPi.GPIO to be installed in Python 3.**
 
-Example implementation:
-```
-#!/usr/bin/python3
-from hx711 import HX711
+Getting started
+---------------
 
-try:
-    hx711 = HX711(
-        dout_pin=5,
-        pd_sck_pin=6,
-        channel='A',
-        gain=64
-    )
+Just install by ```pip3 install HX711```. A basic usage example is given below:
 
-    hx711.reset()   # Before we start, reset the HX711 (not obligate)
-    measures = hx711.get_raw_data(num_measures=3)
-finally:
-    GPIO.cleanup()  # always do a GPIO cleanup in your scripts!
+.. highlight:: python
+    #!/usr/bin/python3
+    from hx711 import HX711
 
-print("\n".join(measures))
-```
+    try:
+        hx711 = HX711(
+            dout_pin=5,
+            pd_sck_pin=6,
+            channel='A',
+            gain=64
+        )
+
+        hx711.reset()   # Before we start, reset the HX711 (not obligate)
+        measures = hx711.get_raw_data(num_measures=3)
+    finally:
+        GPIO.cleanup()  # always do a GPIO cleanup in your scripts!
+
+    print("\n".join(measures))
 
 
+
+License
+-------
 * Free software: MIT license
 
 
