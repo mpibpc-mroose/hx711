@@ -17,9 +17,7 @@ HX711
      :target: https://pyup.io/repos/github/mpibpc_mroose/hx711/
      :alt: Updates
 
-=====
-HX711
-=====
+
 This library allows to drive a HX711 on a Raspberry Pi. It just provides the capabilities:
 
 * to set channel an gain and
