@@ -19,7 +19,7 @@ test_requirements = []
 
 setup(
     name='hx711',
-    version='1.0.0',
+    version='1.0.1',
     description="library to drive a HX711 o a Raspberry Pi",
     long_description=readme + '\n\n' + history,
     author="Marco Roose",
