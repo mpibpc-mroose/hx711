@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 __author__ = """Marco Roose"""
 __email__ = 'marco.roose@gmx.de'
-__version__ = '1.1.0'
+__version__ = '1.1.1'
 
 
 class GenericHX711Exception(Exception):

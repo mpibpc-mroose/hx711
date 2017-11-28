@@ -8,26 +8,15 @@ from setuptools import setup, find_packages
 with open('README.rst') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
-
-requirements = []
-
-setup_requirements = []
-
-test_requirements = []
-
 setup(
     name='hx711',
-    version='1.1.0',
-    description="library to drive a HX711 o a Raspberry Pi",
-    long_description=readme + '\n\n' + history,
+    version='1.1.1',
+    description="A library to drive a HX711 load cell amplifier on a Raspberry Pi",
     author="Marco Roose",
     author_email='marco.roose@gmx.de',
     url='https://github.com/mpibpc-mroose/hx711',
     packages=find_packages(include=['hx711']),
     include_package_data=True,
-    install_requires=requirements,
     license="MIT license",
     zip_safe=False,
     keywords='hx711',
@@ -38,6 +27,4 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='tests',
-    tests_require=test_requirements,
-    setup_requires=setup_requirements,
 )

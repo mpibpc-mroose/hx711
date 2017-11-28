@@ -19,7 +19,7 @@ HX711
 
 Description
 -----------
-This library allows to drive a HX711 on a Raspberry Pi. It just provides the capabilities:
+This library allows to drive a HX711 load cess amplifier with a Raspberry Pi. It just provides the capabilities:
 
 * to set channel an gain and
 * to read raw values

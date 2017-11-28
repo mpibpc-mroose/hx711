@@ -1,4 +1,6 @@
 # Byte-compiled / optimized / DLL files
+.pypirc
+
 .idea
 __pycache__/
 *.py[cod]
