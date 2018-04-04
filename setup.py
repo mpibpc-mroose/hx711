@@ -5,12 +5,12 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 setup(
     name='hx711',
-    version='1.1.1',
+    version='1.1.2',
     description="A library to drive a HX711 load cell amplifier on a Raspberry Pi",
     long_description=readme,
     long_description_content_type="text/markdown",
