@@ -1,21 +1,13 @@
-=====
 HX711
 =====
 
+[![PyPi](https://img.shields.io/pypi/v/hx711.svg)](https://pypi.python.org/pypi/hx711)
 
-.. image:: https://img.shields.io/pypi/v/hx711.svg
-        :target: https://pypi.python.org/pypi/hx711
+[![Travis](https://img.shields.io/travis/mpibpc_mroose/hx711.svg)](https://travis-ci.org/mpibpc_mroose/hx711)
 
-.. image:: https://img.shields.io/travis/mpibpc_mroose/hx711.svg
-        :target: https://travis-ci.org/mpibpc_mroose/hx711
+[![ReadTheDocs](https://readthedocs.org/projects/hx711/badge/?version=latest)](https://hx711.readthedocs.io/en/latest/?badge=latest)
 
-.. image:: https://readthedocs.org/projects/hx711/badge/?version=latest
-        :target: https://hx711.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/mpibpc_mroose/hx711/shield.svg
-     :target: https://pyup.io/repos/github/mpibpc_mroose/hx711/
-     :alt: Updates
+[![PyUp](https://pyup.io/repos/github/mpibpc_mroose/hx711/shield.svg)](https://pyup.io/repos/github/mpibpc_mroose/hx711/)
 
 Description
 -----------
@@ -31,7 +23,7 @@ Getting started
 
 Just install by ```pip3 install HX711```. A basic usage example is given below:
 
-.. highlight:: python
+```python
     #!/usr/bin/python3
     from hx711 import HX711
 
@@ -49,7 +41,7 @@ Just install by ```pip3 install HX711```. A basic usage example is given below:
         GPIO.cleanup()  # always do a GPIO cleanup in your scripts!
 
     print("\n".join(measures))
-
+```
 
 
 License
@@ -63,7 +55,3 @@ Credits
 I used https://github.com/gandalf15/HX711/ as base.
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-

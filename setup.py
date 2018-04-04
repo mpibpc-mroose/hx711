@@ -12,6 +12,8 @@ setup(
     name='hx711',
     version='1.1.1',
     description="A library to drive a HX711 load cell amplifier on a Raspberry Pi",
+    long_description=readme,
+    long_description_content_type="text/markdown",
     author="Marco Roose",
     author_email='marco.roose@gmx.de',
     url='https://github.com/mpibpc-mroose/hx711',
