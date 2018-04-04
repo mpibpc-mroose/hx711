@@ -52,7 +52,7 @@ setup(
     project_urls={
         'Bug Reports': 'https://github.com/mpibpc-mroose/hx711/issues',
     },
-    use_scm_version=True,
+    use_scm_version=False,
     long_description=long_description,
     long_description_content_type="text/markdown",
 
