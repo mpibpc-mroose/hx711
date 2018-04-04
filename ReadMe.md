@@ -3,7 +3,7 @@ HX711
 
 [![PyPi](https://img.shields.io/pypi/v/hx711.svg)](https://pypi.python.org/pypi/hx711)
 
-[![Travis](https://img.shields.io/travis/mpibpc_mroose/hx711.svg)](https://travis-ci.org/mpibpc_mroose/hx711)
+[![Travis](https://travis-ci.org/mpibpc-mroose/hx711.svg?branch=master)](https://travis-ci.org/mpibpc_mroose/hx711)
 
 Description
 -----------
