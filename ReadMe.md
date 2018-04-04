@@ -5,10 +5,6 @@ HX711
 
 [![Travis](https://img.shields.io/travis/mpibpc_mroose/hx711.svg)](https://travis-ci.org/mpibpc_mroose/hx711)
 
-[![ReadTheDocs](https://readthedocs.org/projects/hx711/badge/?version=latest)](https://hx711.readthedocs.io/en/latest/?badge=latest)
-
-[![PyUp](https://pyup.io/repos/github/mpibpc_mroose/hx711/shield.svg)](https://pyup.io/repos/github/mpibpc_mroose/hx711/)
-
 Description
 -----------
 This library allows to drive a HX711 load cess amplifier with a Raspberry Pi. It just provides the capabilities:
