@@ -38,7 +38,7 @@ with open(str(base_dir / 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='hx711',
-    version='1.1.2',
+    version='1.1.2.2',
     description="A library to drive a HX711 load cell amplifier on a Raspberry Pi",
     url='https://github.com/mpibpc-mroose/hx711/',
     author="Marco Roose",
@@ -52,17 +52,13 @@ setup(
     project_urls={
         'Bug Reports': 'https://github.com/mpibpc-mroose/hx711/issues',
     },
-    use_scm_version=False,
     long_description=long_description,
     long_description_content_type="text/markdown",
-
     packages=packages,
     package_data={},
     include_package_data=True,
     license="MIT license",
-    zip_safe=False,
     keywords='hx711',
-    setup_requires=['setuptools_scm'],
     cmdclass={
         'develop': PostDevelopCommand,
         'install': PostInstallCommand,

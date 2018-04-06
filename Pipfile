@@ -9,11 +9,11 @@ name = "pypi"
 
 tox = "*"
 "flake8" = "*"
+twine = "*"
 
 
 [packages]
 
-setuptools-scm = "*"
 
 
 [requires]
