@@ -38,7 +38,7 @@ with open(str(base_dir / 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='hx711',
-    version='1.1.2.2',
+    version='1.1.2.3',
     description="A library to drive a HX711 load cell amplifier on a Raspberry Pi",
     url='https://github.com/mpibpc-mroose/hx711/',
     author="Marco Roose",
