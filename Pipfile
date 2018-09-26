@@ -10,7 +10,7 @@ name = "pypi"
 tox = "*"
 "flake8" = "*"
 twine = "*"
-
+pluggy = "*"
 
 [packages]
 
