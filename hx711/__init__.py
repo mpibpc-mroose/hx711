@@ -48,7 +48,7 @@ class HX711(object):
         :type channel: str
         """
         if (isinstance(dout_pin, int) and
-                isinstance(pd_sck_pin, int)):  # just check of it is integer
+            isinstance(pd_sck_pin, int)):  # just check of it is integer
             self._pd_sck = pd_sck_pin  # init pd_sck pin number
             self._dout = dout_pin  # init data pin number
         else:
@@ -211,12 +211,13 @@ class HX711(object):
             GPIO.output(self._pd_sck, True)  # set high
             GPIO.output(self._pd_sck, False)  # set low
             end_counter = time.perf_counter()  # stop timer
+            time_elapsed = float(end_counter - start_counter)
             # check if HX711 did not turn off...
             # if pd_sck pin is HIGH for 60 µs and more the HX 711 enters power down mode.
-            if end_counter - start_counter >= 0.00006:
+            if time_elapsed >= 0.00006:
                 logging.warning(
                     'setting gain and channel took more than 60µs. '
-                    'Time elapsed: ' + str(end_counter - start_counter)
+                    'Time elapsed: {:0.8f}'.format(time_elapsed)
                 )
                 # hx711 has turned off. First few readings are inaccurate.
                 # Despite this reading was ok and data can be used.
@@ -260,11 +261,12 @@ class HX711(object):
             GPIO.output(self._pd_sck, False)
             # stop timer
             end_counter = time.perf_counter()
+            time_elapsed = float(end_counter - start_counter)
 
             # check if the hx 711 did not turn off:
             # if pd_sck pin is HIGH for 60 us and more than the HX 711 enters power down mode.
-            if end_counter - start_counter >= 0.00006:
-                logging.debug('Reading data took longer than 60µs. Time elapsed: ' + str(end_counter - start_counter))
+            if time_elapsed >= 0.00006:
+                logging.debug('Reading data took longer than 60µs. Time elapsed: {:0.8f}'.format(time_elapsed))
                 return False
 
             # Shift the bits as they come to data_in variable.
