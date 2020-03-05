@@ -32,7 +32,7 @@ Just install by ```pip3 install HX711```. A basic usage example is given below:
         )
 
         hx711.reset()   # Before we start, reset the HX711 (not obligate)
-        measures = hx711.get_raw_data(num_measures=3)
+        measures = hx711.get_raw_data(times=3)
     finally:
         GPIO.cleanup()  # always do a GPIO cleanup in your scripts!
 
