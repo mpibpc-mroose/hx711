@@ -241,7 +241,7 @@ class HX711(object):
         ready_counter = 0
 
         # loop until HX711 is ready
-        # halt when maximum number of tires is reached
+        # halt when maximum number of tries is reached
         while self._ready() is False:
             time.sleep(0.01)  # sleep for 10 ms before next try
             ready_counter += 1  # increment counter
