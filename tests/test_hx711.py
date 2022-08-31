@@ -109,7 +109,7 @@ class TestHx711(TestCase):
 
         for channel in hx711._valid_channels:
             with self.subTest(
-                "valid gain {channel} should ot raise an error".format(
+                "valid gain {channel} should not raise an error".format(
                     channel=channel
                 )
             ):

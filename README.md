@@ -7,10 +7,10 @@ HX711
 
 Description
 -----------
-This library allows to drive a HX711 load cess amplifier with a Raspberry Pi. It just provides the capabilities:
+This library allows you to communicate with the HX711 load cell amplifier with a Raspberry Pi. You can:
 
-* to set channel an gain and
-* to read raw values
+* set channel gain
+* read raw values
 
 **This package requires RPi.GPIO to be installed in Python 3.**
 
@@ -25,13 +25,13 @@ Just install by ```pip3 install HX711```. A basic usage example is given below:
 
     try:
         hx711 = HX711(
-            dout_pin=5,
-            pd_sck_pin=6,
+            dout_pin=17,
+            pd_sck_pin=21,
             channel='A',
             gain=64
         )
 
-        hx711.reset()   # Before we start, reset the HX711 (not obligate)
+        hx711.reset()   # Before we start, reset the HX711 (optional)
         measures = hx711.get_raw_data(times=3)
     finally:
         GPIO.cleanup()  # always do a GPIO cleanup in your scripts!

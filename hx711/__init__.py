@@ -32,15 +32,15 @@ class HX711(object):
     _valid_channels = ['A', 'B']
     _valid_gains_for_channel_A = [64, 128]
     # define the minimum and maximum count for measures for an aggregated measure
-    # this prevents from running the functions for a to long time
+    # this prevents the function from running for too long
     min_measures = 2
     max_measures = 100
 
     def __init__(self, dout_pin, pd_sck_pin, gain=128, channel='A'):
         """
-        :param dout_pin: number of the GPIO DOUT is connectedt to
+        :param dout_pin: GPIO DOUT is connected to
         :type dout_pin: int
-        :param pd_sck_pin: number of the GPIO SCK is connectedt to
+        :param pd_sck_pin: GPIO SCK is connected to
         :type int
         :param gain: gain
         :type gain: int
@@ -52,11 +52,11 @@ class HX711(object):
             self._pd_sck = pd_sck_pin  # init pd_sck pin number
             self._dout = dout_pin  # init data pin number
         else:
-            raise TypeError('dout_pin and pd_sck_pin have to be pin numbers.\nI have got dout_pin: ' \
+            raise TypeError('dout_pin and pd_sck_pin have to be integer numbers.\nI have got dout_pin: ' \
                             + str(dout_pin) + \
                             ' and pd_sck_pin: ' + str(pd_sck_pin) + '\n')
 
-        GPIO.setmode(GPIO.BCM)  # set GPIO pin mode to BCM numbering
+        GPIO.setmode(GPIO.BCM)  # set pin mode to BCM numbering (GPIO numbers, not board pins)
         GPIO.setup(self._pd_sck, GPIO.OUT)  # pin _pd_sck is output only
         GPIO.setup(self._dout, GPIO.IN)  # pin _dout is input only
         self.channel = channel
@@ -84,7 +84,7 @@ class HX711(object):
             self._apply_setting()
         else:
             logging.warning(
-                """current channel != "A" so no need to set a gain"""
+                """current channel != "A" so no need to set the gain"""
                 """ current channel is '{channel}'""".format(channel=self.channel)
             )
 
@@ -131,14 +131,14 @@ class HX711(object):
 
     def _validate_measure_count(self, times):
         """
-        check if "times" is within the borders defined in the class
+        check if "times" is within the min/max range defined in the class
 
         :param times: "times" to check
         :type times: int
         """
         if not self.min_measures <= times <= self.max_measures:
             raise ParameterValidationError(
-                "{times} is not within the borders defined in the class".format(
+                "{times} is not within the min/max range defined in the class".format(
                     times=times
                 )
             )
@@ -164,13 +164,12 @@ class HX711(object):
 
     def _apply_setting(self):
         """
-        apply some setting by just do a read and wait a bit
-        :param channel: channel to select
-        :type channel: str
+        Setting the channel and gain bits at the end of the "conversation" configures the chip for the next reading.
+        So we need to perform a read with those bits to apply a setting change to the chip.
         :return: True if successful
         :rtype bool
         """
-        # after changing channel or gain it has to wait 50 ms to allow adjustment.
+        # after changing channel or gain we have to wait >50ms to allow adjustment.
         # the data before is garbage and cannot be used.
         self._read()
         time.sleep(0.5)
@@ -178,11 +177,11 @@ class HX711(object):
 
     def _ready(self):
         """
-        check if ther is som data is ready to get read.
+        Data is ready for reading when DOUT is low
         :return True if there is some date
         :rtype bool
         """
-        # if DOUT pin is low, data is ready for reading
+
         _is_ready = GPIO.input(self._dout) == 0
         logging.debug("check data ready for reading: {result}".format(
             result="YES" if _is_ready is True else "NO"
@@ -195,7 +194,7 @@ class HX711(object):
         next required gain and channel
 
         Only called from the _read function.
-        :param num: how often so do the set (1...3)
+        :param num: how many bits to set (1...3)
         :type num: int
         :return True on success
         :rtype bool
@@ -213,7 +212,7 @@ class HX711(object):
             end_counter = time.perf_counter()  # stop timer
             time_elapsed = float(end_counter - start_counter)
             # check if HX711 did not turn off...
-            # if pd_sck pin is HIGH for 60 µs and more the HX 711 enters power down mode.
+            # if pd_sck pin is HIGH for 60µs or more the HX 711 enters power down mode.
             if time_elapsed >= 0.00006:
                 logging.warning(
                     'setting gain and channel took more than 60µs. '
@@ -235,7 +234,7 @@ class HX711(object):
         :return raw data
         :rtype: int
         """
-        # start by setting the pd_sck to false
+        # start by pulling the clock line low
         GPIO.output(self._pd_sck, False)
         # init the counter
         ready_counter = 0
@@ -243,7 +242,7 @@ class HX711(object):
         # loop until HX711 is ready
         # halt when maximum number of tries is reached
         while self._ready() is False:
-            time.sleep(0.01)  # sleep for 10 ms before next try
+            time.sleep(0.01)  # sleep for 10ms before next try
             ready_counter += 1  # increment counter
             # check loop count
             # and stop when defined maximum is reached
@@ -263,13 +262,13 @@ class HX711(object):
             end_counter = time.perf_counter()
             time_elapsed = float(end_counter - start_counter)
 
-            # check if the hx 711 did not turn off:
-            # if pd_sck pin is HIGH for 60 us and more than the HX 711 enters power down mode.
+            # check if the hx711 did not turn off:
+            # if pd_sck pin is HIGH for 60 us or more than the HX711 enters power down mode.
             if time_elapsed >= 0.00006:
                 logging.debug('Reading data took longer than 60µs. Time elapsed: {:0.8f}'.format(time_elapsed))
                 return False
 
-            # Shift the bits as they come to data_in variable.
+            # Shift the bits in to data_in variable.
             # Left shift by one bit then bitwise OR with the new bit.
             data_in = (data_in << 1) | GPIO.input(self._dout)
 
